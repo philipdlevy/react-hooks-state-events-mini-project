@@ -19,9 +19,9 @@ function App() {
     setTaskData(newArray);
   }
 
-  function handleCategoryFilter(event) {
-    setCategoryData(event.target.value)
-  }
+  // function handleCategoryFilter(event) {
+  //   setCategoryData(event.target.value)
+  // }
 
   const categoryFilter = CATEGORIES.filter((category) => category !== "All")
 
@@ -30,6 +30,7 @@ function App() {
   })
 
   function onTaskFormSubmit(newTask) {
+    console.log("newTask")
     setTaskData([...taskData, newTask])
   }
 

@@ -1,15 +1,17 @@
 import React, {useState} from "react";
 
 function NewTaskForm({ categories, onTaskFormSubmit }) {
-  console.log("taskcat", categories)
-  const [userInput, setUserInput] = useState()
-  const [categoryInput, setCategoryInput] = useState()
+  console.log("categories", categories)
+  console.log("onTaskFormSubmit", onTaskFormSubmit)
+  const [userInput, setUserInput] = useState("")
+  const [categoryInput, setCategoryInput] = useState("")
 
-  const displaycategories = categories.map((category) => {
+  const displayCategories = categories.map((category) => {
     return <option key={category}>{category}</option>
   })
 
 function handleSubmit(e) {
+  console.log(userInput, categoryInput)
   e.preventDefault();
   const newItemData = {
     text: userInput,
@@ -27,7 +29,7 @@ function handleChangeCategory(e) {
 }
 
   return (
-    <form className="new-task-form">
+    <form className="new-task-form" onSubmit={handleSubmit}>
       <label>
         Details
         <input type="text" name="text" onChange={handleValueInput}/>
@@ -35,10 +37,10 @@ function handleChangeCategory(e) {
       <label>
         Category
         <select name="category" onChange={handleChangeCategory}>
-          {displaycategories}
+          {displayCategories}
         </select>
       </label>
-      <input type="submit" value="Add task" onSubmit={handleSubmit}/>
+      <input type="submit" value="Add task" />
     </form>
   );
 }
